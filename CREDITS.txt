@@ -1,0 +1,5 @@
+CREDITOS
+
+Thiaguinho - Criador do Terminal++
+nlohmann - Criador da biblioteca <json.hpp>
+Ihor Kalnytskyi - Criador da biblioteca <termcolor.hpp>

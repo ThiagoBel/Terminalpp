@@ -1,0 +1,8 @@
+Terminal++ License
+Copyright (c) 2025 Thiago
+
+Terminal++ is free and open-source software. You are permitted to:
+- Use it for personal or commercial purposes.
+- Modify the source code.
+- Distribute original or modified versions, provided that this license and copyright notice are included.
+THIS SOFTWARE IS PROVIDED "AS IS," WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED.
