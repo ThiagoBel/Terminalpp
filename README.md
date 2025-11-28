@@ -1,10 +1,10 @@
 # Terminal++
 
-![Downloads](https://img.shields.io/github/downloads/ThiagoBel/Terminal++/total)
+![Downloads](https://img.shields.io/github/downloads/ThiagoBel/Terminalpp/total)
 ![Release](https://img.shields.io/badge/release-v1.0.0-orange)
 ![C++](https://img.shields.io/badge/language-C%2B%2B-blue)
 ![OS](https://img.shields.io/badge/os-Windows%2010%2F11-blue)
-![Code Size](https://img.shields.io/github/languages/code-size/ThiagoBel/Terminal++)
+![Code Size](https://img.shields.io/github/languages/code-size/ThiagoBel/Terminalpp)
 
 **Terminal++** (ou **T++**) é um terminal customizado escrito em C++11 para **Windows**, criado para oferecer uma experiência poderosa, com recursos avançados, comandos internos, verificação de sistema e personalização via terminal.
 
