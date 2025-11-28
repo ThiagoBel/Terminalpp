@@ -1,7 +1,7 @@
 # Terminal++
 
 ![Downloads](https://img.shields.io/github/downloads/ThiagoBel/Terminalpp/total)
-![Release](https://img.shields.io/badge/release-v1.0.0-orange)
+![Release](https://img.shields.io/badge/release-228115-orange)
 ![C++](https://img.shields.io/badge/language-C%2B%2B-blue)
 ![OS](https://img.shields.io/badge/os-Windows%2010%2F11-blue)
 ![Code Size](https://img.shields.io/github/languages/code-size/ThiagoBel/Terminalpp)

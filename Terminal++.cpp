@@ -59,11 +59,9 @@ string server_docs = "https://raw.githubusercontent.com/ThiagoBel/versions_apps/
 string caminho_do_tpp;                  // caminho do Terminal++
 string nameapp = "T++";                 // Apenas o nome do bagulho
 string sub_this_version = "Terminal++"; // key para testes
-string this_version = "_22-8115";       // versao do teu terminal que funciona da seguinte forma:
-// primeiro comeca com "_"
-// depois comeca com o primeiro digito do ano
+string this_version = "228115";       // versao do teu terminal que funciona da seguinte forma:
+// primeiro comeca com o primeiro digito do ano
 // depois com o primeiro digito do dia
-// depois um traço "-"
 // depois o segundo digito do dia
 // depois o primeiro e segundo digito do mes
 // por ultimo, o ultimo digito do ano
