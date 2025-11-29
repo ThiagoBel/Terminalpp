@@ -55,3 +55,27 @@ O Terminal++ possui diversos comandos internos, incluindo:
 
 - Inicie o Terminal++ com permissão de administrador e use o comando `&path`, isso faz que você possa usar comandos do tipo: "Terminal++ --version" em outros terminais :)
 - Use o comando `docs` para ver todos os comandos do Terminal++
+
+# Arquivo Terminal++
+
+Você consegue criar um arquivo `.tplusx` para que possa executar comandos, exemplos:
+
+```
+say 1
+say 2
+say 3
+```
+
+```
+say Abrindo verificação...
+verify_tpp
+```
+
+```
+say Carregando updates...
+check_updates
+say Carregando keys...
+check_key
+say Carregando creditos...
+credits
+```
