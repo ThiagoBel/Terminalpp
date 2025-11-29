@@ -1,25 +1,24 @@
-//     ______                                                ___            __        __
-//    /\__  _\                          __                  /\_ \          /\ \      /\ \     
-//    \/_/\ \/    __   _ __    ___ ___ /\_\    ___      __  \//\ \         \_\ \___  \_\ \___
-//       \ \ \  /'__`\/\`'__\/' __` __`\/\ \ /' _ `\  /'__`\  \ \ \       /\___  __\/\___  __\ 
-//        \ \ \/\  __/\ \ \/ /\ \/\ \/\ \ \ \/\ \/\ \/\ \L\.\_ \_\ \_     \/__/\ \_/\/__/\ \_/
-//         \ \_\ \____\\ \_\ \ \_\ \_\ \_\ \_\ \_\ \_\ \__/.\_\/\____\        \ \_\     \ \_\ 
-//          \/_/\/____/ \/_/  \/_/\/_/\/_/\/_/\/_/\/_/\/__/\/_/\/____/         \/_/      \/_/
-//
-//
-// T++ é um terminal inspirado pelo Prompt de Comando do Windows, com o objetivo de adicionar mais comandos para ajudar mais o usuario.
-// Esse terminal tem todos os comandos do Prompt de Comandos do Windows + alguns outros comandos.
-// Só é permitido Windows 11 ou Windows 10
-// Feito com amor, carinho e dores de cabeça por Thiaguinho no C++11
-//     ____       __        __           _     _
-//    /\  _`\    /\ \      /\ \        /' \  /' \    
-//    \ \ \/\_\  \_\ \___  \_\ \___   /\_, \/\_, \   
-//     \ \ \/_/_/\___  __\/\___  __\   \/_/\ \/_/\ \  
-//      \ \ \L\ \/__/\ \_/\/__/\ \_/     \ \ \ \ \ \ 
-//       \ \____/   \ \_\     \ \_\       \ \_\ \ \_\ 
-//        \/___/     \/_/      \/_/        \/_/  \/_/
-//
-// Codigo inteiramente feito em C++11 usando MinGW
+/*______                                                ___            __        __
+ /\__  _\                          __                  /\_ \          /\ \      /\ \
+ \/_/\ \/    __   _ __    ___ ___ /\_\    ___      __  \//\ \         \_\ \___  \_\ \___
+    \ \ \  /'__`\/\`'__\/' __` __`\/\ \ /' _ `\  /'__`\  \ \ \       /\___  __\/\___  __\
+     \ \ \/\  __/\ \ \/ /\ \/\ \/\ \ \ \/\ \/\ \/\ \L\.\_ \_\ \_     \/__/\ \_/\/__/\ \_/
+      \ \_\ \____\\ \_\ \ \_\ \_\ \_\ \_\ \_\ \_\ \__/.\_\/\____\        \ \_\     \ \_\
+       \/_/\/____/ \/_/  \/_/\/_/\/_/\/_/\/_/\/_/\/__/\/_/\/____/         \/_/      \/_/
+
+T++ é um terminal inspirado pelo Prompt de Comando do Windows, com o objetivo de adicionar mais comandos para ajudar mais o usuario.
+Esse terminal tem todos os comandos do Prompt de Comandos do Windows + alguns outros comandos.
+Só é permitido Windows 11 ou Windows 10
+Feito com amor, carinho e dores de cabeça por Thiaguinho no C++11
+ ____       __        __             _     _
+/\  _`\    /\ \      /\ \          /' \  /' \
+\ \ \/\_\  \_\ \___  \_\ \___     /\_, \/\_, \
+ \ \ \/_/_/\___  __\/\___  __\     \/_/\ \/_/\ \
+  \ \ \L\ \/__/\ \_/\/__/\ \_/       \ \ \ \ \ \
+   \ \____/   \ \_\     \ \_\         \ \_\ \ \_\
+    \/___/     \/_/      \/_/          \/_/  \/_/
+
+Codigo inteiramente feito em C++11 usando MinGW */
 
 #include <iostream> // se nao tiver nao roda
 #include <cstdlib>
@@ -59,7 +58,7 @@ string server_docs = "https://raw.githubusercontent.com/ThiagoBel/versions_apps/
 string caminho_do_tpp;                  // caminho do Terminal++
 string nameapp = "T++";                 // Apenas o nome do bagulho
 string sub_this_version = "Terminal++"; // key para testes
-string this_version = "228115";       // versao do teu terminal que funciona da seguinte forma:
+string this_version = "228115";         // versao do teu terminal que funciona da seguinte forma:
 // primeiro comeca com o primeiro digito do ano
 // depois com o primeiro digito do dia
 // depois o segundo digito do dia
@@ -117,6 +116,7 @@ const vector<pair<string, string>> coisoss = {
     {"Erro. Um erro desconhecido aconteceu", "2emd5"},
     {"Erro. Arquivo temporario nao foi deletado corretamente", "2atd5"},
     {"Erro. Erro na criação do arquivo", "2anc5"},
+    {"Erro. Não foi possível abrir o arquivo", "2nfa5"},
     {"Erro. ARG desconhecida", "2amd5"},
     {"Erro. Valor não permitido", "2vnp5"},
     {"Erro. Comando desconhecido", "2cnc5"},
@@ -124,6 +124,7 @@ const vector<pair<string, string>> coisoss = {
     {"Erro. Esse comando só funciona com permissão do administrador", "2coa5"},
     {"Erro. Sem o CURL o Terminal++ não irá funcionar", "2soc5"},
     {"Erro. Parâmetros insuficientes", "2par5"},
+    {"Erro. Comando 'say' inválido, faltando ')'", "2cds5"},
     {"Erro.", "2soe5"},
     {"?", "2mne5"}};
 
@@ -206,133 +207,11 @@ bool CURL_CHECK()
     }
 }
 
-string OS_CHECK()
+bool IS_WINDOWS()
 {
-#ifdef _WIN32
-    return "Windows";
-#elif defined(__unix__)
-    return "Unix";
-#else
-    return errors("2mne5");
-#endif
-} // ve se é windows ou unix
-
-string SUB_OS_CHECK()
-{
-#ifdef __EMSCRIPTEN__
-    return "WebAssembly";
-#elif defined(__PROSPERO__)
-    return "PlayStation 5";
-#elif defined(__ORBIS__)
-    return "PlayStation 4";
-#elif defined(__NX__)
-    return "Nintendo Switch";
-#elif defined(_DURANGO)
-    return "Xbox (SDK)";
-#elif defined(_WIN64)
-    return "Windows 64 bits";
-#elif defined(_WIN32)
-    return "Windows 32 bits";
-#elif defined(__APPLE__)
-#include <TargetConditionals.h>
-#if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
-    return "iOS";
-#else
-    return "macOS";
-#endif
-#elif defined(__ANDROID__)
-    return "Android";
-#elif defined(__CYGWIN__)
-    return "Cygwin";
-#elif defined(__MINGW32__) || defined(__MINGW64__)
-    return "MinGW";
-#elif defined(__linux__)
-    return "Linux";
-#elif defined(__chromeos__)
-    return "ChromeOS";
-#elif defined(__FreeBSD__) || defined(__NetBSD__) || defined(__OpenBSD__) || defined(__DragonFly__)
-    return "BSD";
-#elif defined(__sun)
-    return "Solaris";
-#elif defined(_AIX)
-    return "AIX (IBM)";
-#elif defined(__HAIKU__)
-    return "Haiku OS";
-#elif defined(__unix__)
-    return "Unix";
-#else
-    return errors("2mne5"); // duvido acontecer isso
-#endif
-} // Ignore, nao sei pq fiz isso
-
-string CPU_CHECK()
-{
-#ifdef _M_X64
-    return "Windows x64 (MSVC)";
-#elif _M_IX86
-    return "Windows x86 (MSVC)";
-#elif __arm__
-    return "ARM 32-bit";
-#elif __aarch64__
-    return "ARM 64-bit";
-#elif __x86_64__
-    return "x86 64-bit";
-#elif __i386__
-    return "x86 32-bit";
-#elif __powerpc__
-    return "PowerPC";
-#elif __MIPS__
-    return "MIPS";
-#else
-    return errors("2mne5"); // vish
-#endif
-} // informacao da cpu
-
-string CPU2_CHECK()
-{
-#ifdef __SSE__
-    return "SSE (Streaming SIMD Extensions)";
-#elif __SSE2__
-    return "SSE2";
-#elif __SSE3__
-    return "SSE3";
-#elif __SSSE3__
-    return "SSSE3";
-#elif __SSE4_1__
-    return "SSE4.1";
-#elif __SSE4_2__
-    return "SSE4.2";
-#elif __AVX__
-    return "AVX (Advanced Vector Extensions)";
-#elif __AVX2__
-    return "AVX2";
-#elif __FMA__
-    return "FMA (Fused Multiply Add)";
-#elif __NEON__
-    return "ARM NEON SIMD";
-#elif __AES__
-    return "AES instructions (ARM/Intel)";
-#else
-    return errors("2mne5");
-#endif
-} // outra informacao da cpu
-
-string CPU3_CHECK()
-{
-#ifdef __BIG_ENDIAN__
-    return "Arquitetura Big Endian";
-#elif __LITTLE_ENDIAN__
-    return "Arquitetura Little Endian";
-#elif __BYTE_ORDER__
-    return "Ordem de bytes (1=LITTLE, 2=BIG)";
-#elif __SIZEOF_POINTER__
-    return "Tamanho do ponteiro (4=32bit, 8=64bit)";
-#elif __WORDSIZE
-    return "Tamanho da palavra do sistema (32 ou 64 bits)";
-#else
-    return errors("2mne5");
-#endif
-} // OUTRA informacao da cpu :)
+    const char *windir = getenv("WINDIR");
+    return windir != nullptr;
+} // ve se é windows
 
 string USER_CHECK()
 {
@@ -345,11 +224,11 @@ string USER_CHECK()
 
 bool check_total()
 {
-    if (OS_CHECK() == "Windows")
+    if (IS_WINDOWS() == true)
     {
         os_check = true; // WOOW
     }
-    if (OS_CHECK() != "Windows")
+    if (IS_WINDOWS() != true)
     {
         cout << termcolor::red << errors("2sst5") << termcolor::reset << "\n"; // se nao for windows, pega o beco
     }
@@ -570,7 +449,7 @@ void botarnopathhhh(const string &novoPath) // pra colocar algo no path do siste
 {
     if (GetFileAttributesA(novoPath.c_str()) == INVALID_FILE_ATTRIBUTES)
     {
-        print_error("Path invalido"); // erro desgracado
+        print_error("Path inválido"); // erro desgracado
         return;
     }
 
@@ -598,7 +477,7 @@ void botarnopathhhh(const string &novoPath) // pra colocar algo no path do siste
 
     if (pathAtual.find(novoPath) != string::npos)
     {
-        print_error("Esse path ja existe no sistema"); // erro gostoso
+        print_error("Esse path já existe no sistema"); // erro gostoso
         RegCloseKey(hKey);
         return;
     }
@@ -651,7 +530,7 @@ void removeropathhhh(const string &pathRemover) // remove algo do path do sistem
 
     if (pos == string::npos)
     {
-        print_error("Esse path nao existe no sistema");
+        print_error("Esse path não existe no sistema");
         RegCloseKey(hKey);
         return;
     }
@@ -765,6 +644,50 @@ string tamanhodearquivos(const string &caminho) // mostra o tamanho de um arquiv
 
     return ss.str();
 }
+
+void executar_comando(const string &userr);
+void executar_comando_arquivo(const string &caminho);
+
+void executar_comando_arquivo(const string &caminho)
+{
+    const string ext = ".tplusx";
+    string arquivo = caminho;
+
+    if (arquivo.size() < ext.size() ||
+        arquivo.substr(arquivo.size() - ext.size()) != ext) // se nao tiver ".tplusx" ele msm bota
+    {
+        arquivo += ext;
+    }
+
+    ifstream arquivov(arquivo);
+
+    if (!arquivov.is_open())
+    {
+        print_error(errors("2nfa5"));
+        return;
+    }
+
+    string linha;
+    while (getline(arquivov, linha))
+    {
+        size_t pos = linha.find("#//"); // comentario
+        if (pos != string::npos)
+            linha = linha.substr(0, pos);
+
+        auto limpar = [](string &s)
+        {
+            while (!s.empty() && isspace((unsigned char)s.front()))
+                s.erase(s.begin());
+            while (!s.empty() && isspace((unsigned char)s.back()))
+                s.pop_back();
+        };
+        limpar(linha);
+
+        if (!linha.empty())
+            executar_comando(linha);
+    }
+}
+
 void executar_comando(const string &userr)
 {
     string user;
@@ -776,14 +699,6 @@ void executar_comando(const string &userr)
     else if (user == "killtpp")
     {
         TerminateProcess(GetCurrentProcess(), 0);
-    }
-    else if (user == "check_infos" || user == "infos") // fiz no tedio
-    {
-        cout << termcolor::blue << "USER: " << USER_CHECK() << termcolor::reset << "\n";                  // INFORMACOOOOOOOOOOES
-        cout << termcolor::blue << "OS: " << SUB_OS_CHECK() << termcolor::reset << "\n";                  // INFORMACOOOOOOOOOOES
-        cout << termcolor::blue << "CPU: " << CPU_CHECK() << termcolor::reset << "\n";                    // INFORMACOOOOOOOOOOES
-        cout << termcolor::blue << "CPU EXTENSIONS: " << CPU2_CHECK() << termcolor::reset << "\n";        // INFORMACOOOOOOOOOOES
-        cout << termcolor::blue << "ENDIAN / POINTER INFO: " << CPU3_CHECK() << termcolor::reset << "\n"; // INFORMACOOOOOOOOOOES
     }
     else if (user.size() >= 3 && user.substr(0, 3) == "cd ")
     {
@@ -817,10 +732,15 @@ void executar_comando(const string &userr)
         // ignora, ia ter pra linux, mas tirei suporte pra linux, ai fiquei com preguiça de tirar
         // o comando agr so roda windows
     }
-    else if (user.size() >= 4 && user.substr(0, 4) == "say ") // fiz no tedio
+    else if (user.size() >= 4 && user.substr(0, 4) == "say ") // ele diz algo
     {
         string aaa = user.substr(4);
-        cout << aaa << endl; // ele diz algo
+        size_t pos = aaa.find("%stop_say%");
+        if (pos != string::npos)
+        {
+            aaa = aaa.substr(0, pos);
+        }
+        cout << aaa << endl;
     }
     else if (user == "check_updates" || user == "updates") // verifica se esta desatualizado ou nao
     {
@@ -959,6 +879,11 @@ void executar_comando(const string &userr)
         string caminhouu = user.substr(11);
         print_sys(tamanhodearquivos(caminhouu));
     }
+    else if (user.size() > 5 && user.substr(0, 5) == "exec ")
+    {
+        string oqqq = user.substr(5);
+        executar_comando_arquivo(oqqq);
+    }
     else
     {
         if (osterm_enabled == true)
@@ -1084,6 +1009,11 @@ int main(int argc, char *argv[])
                 string sub = argv[2];
                 cout << termcolor::green << CHECK_EXTERNAL_INFOS(sub) << termcolor::reset << endl;
             }
+            else
+            {
+                print_error("Nenhum comando fornecido");
+                return 1;
+            }
             return 0;
         }
         else if (arg == "--ut") // usar comandos do Terminal++ por fora
@@ -1105,8 +1035,51 @@ int main(int argc, char *argv[])
             else
             {
                 print_error("Nenhum comando fornecido");
+                return 1;
             }
             return 0;
+        }
+        else if (arg == "--itl") // coisas inuteis
+        {
+            if (argc > 2)
+            {
+                string sub = argv[2];
+                if (sub == "-faces") // gera rostinhos
+                {
+                    srand(time(0));
+
+                    const char *arr1[] = {">", "<"};                                                         // sombracelha
+                    const char *arr2[] = {":", ";", "="};                                                    // olho
+                    const char *arr3[] = {")", "(", "()", "[]", "]", "[", ">", "<", "D", "P", "3", "/", ""}; // boca
+
+                    string resultado;
+
+                    if (rand() % 2 == 0)
+                    {
+                        int i1 = rand() % 3;
+                        resultado += arr1[i1];
+                    }
+
+                    int i2 = rand() % 3;
+                    int i3 = rand() % (sizeof(arr3) / sizeof(arr3[0]));
+
+                    resultado += arr2[i2];
+                    resultado += arr3[i3];
+
+                    cout << resultado << endl;
+                }
+                else 
+                {
+                    print_error(errors("2amd5"));
+                    return 1;
+                }
+            }
+            return 0;
+        }
+        else
+        {
+            print_error(errors("2amd5"));
+            return 1;
         }
     }
     check_total(); // verifica tudo
@@ -1151,4 +1124,4 @@ Você está no modo administrador, se você usar comandos errados, pode acabar d
     }
     return 0; // se terminar tudo okei retorna 0, que significa que deu certo :)
 }
-// cabou
+// cabou"

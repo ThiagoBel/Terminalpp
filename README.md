@@ -18,8 +18,7 @@ O Terminal++ possui diversos comandos internos, incluindo:
   - `say <texto>` — Exibe texto no terminal.
   - `open <aplicativo>` — Abre programas no Windows.
 
-**Informações do sistema**
-  - `check_infos` ou `infos` — Mostra usuário, SO, CPU, extensões e arquitetura.
+**Informações por fora**
   - `check_info_ext <url>` ou `ext <url>` — Obtém informações externas de uma URL.
 
 **Atualizações e versão**

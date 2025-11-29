@@ -1,0 +1,2 @@
+windres configs/Terminal++.rc -O coff -o configs/Terminal++_res.o
+g++ Terminal++.cpp configs/Terminal++_res.o -o Terminal++.exe -static -static-libgcc -static-libstdc++
