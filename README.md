@@ -79,3 +79,6 @@ check_key
 say Carregando creditos...
 credits
 ```
+
+Para executar o arquivo, abra o Terminal++ e use esse comando:
+`exec <CAMINHO_DO_ARQUIVO>`
